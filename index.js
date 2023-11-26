@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path';
 
 const porta = 3000;
 const host = '0.0.0.0';
@@ -77,9 +78,7 @@ function processaCadastroUsuario(req, res) {
 }
 
 const app = express();
-
-// Indicando para a aplicação como servir arquivos estáticos localizados na pasta 'paginas'.
-app.use(express.static('./paginas'));
+app.use(express.static(path.join(process.cwd(), './paginas')));
 
 // Adicionando o middleware bodyParser para processar dados do corpo da requisição
 app.use(bodyParser.urlencoded({ extended: true }));
